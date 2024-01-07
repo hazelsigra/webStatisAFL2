@@ -30,5 +30,14 @@ Route::get('/contactus', function () {
     return view('contact');
 });
 
-
-
+Route::middleware('auth')->group(function ()  {
+    Route::controller(\App\Http\Controllers\CartController::class)
+    ->prefix('cart')
+    ->group(function () {
+        Route::get('/', 'Index');
+        Route::get('/set/{menu_id}', 'InsertToCart');
+        Route::get('/delete/{cart_id}', 'DeleteLog');
+        Route::get('/delete/{cart_ids}/bulk', 'BulkDeleteLog');
+        Route::get('/delete/{cart_ids}/undo', 'RestoreDeletedLog');
+    });
+});

@@ -34,7 +34,7 @@
     </head>
     <body class="d-flex flex-column h-100">
 
-    @include('layout.navigation')
+    @include('Layout.navigation')
 
     <div class="container mt-5">
         @yield('container')
